@@ -1,4 +1,10 @@
-import { Assurance, TrustedPartners, RiskTolerance, Hero } from "../components";
+import {
+  Assurance,
+  TrustedPartners,
+  RiskTolerance,
+  Hero,
+  Fee,
+} from "../components";
 
 const Home = () => {
   return (
@@ -7,6 +13,7 @@ const Home = () => {
       <RiskTolerance />
       <Assurance />
       <TrustedPartners />
+      <Fee />
     </div>
   );
 };
