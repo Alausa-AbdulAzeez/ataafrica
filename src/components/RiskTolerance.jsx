@@ -212,7 +212,7 @@ const RiskTolerance = () => {
         </div>
       </div>
       <div className="flex flex-1 items-center justify-center ">
-        <div className="w-[70%] h-[70%] p-[50px] flex items-center justify-center  border-l border-[#4e4e4e]">
+        <div className="w-[70%] h-[70%] p-[50px] flex items-center justify-center  border-l border-[#c5c5c5]">
           <Doughnut data={data} />
         </div>
       </div>
