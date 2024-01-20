@@ -2,9 +2,13 @@ import React from "react";
 import { navLinks } from "../assets/constants";
 import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ isVisible }) => {
   return (
-    <div className="flex justify-between z-10 px-[64px] w-full text-white h-[80px] items-center sticky top-0 left-0">
+    <div
+      className={`flex justify-between z-[10] px-[64px] w-full text-white h-[80px] items-center fixed top-0 left-0 ${
+        isVisible ? "backdrop-blur-2xl bg-black shadow-md" : "bg-transparent"
+      }`}
+    >
       <div className="text-[28px]">Advisor</div>
       <ul className="flex gap-[40px] text-[18px]">
         {navLinks?.map((item, index) => {
