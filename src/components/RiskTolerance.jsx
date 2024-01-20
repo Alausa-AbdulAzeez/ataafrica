@@ -4,6 +4,7 @@ import { Doughnut } from "react-chartjs-2";
 import DiscreteSliderMarks from "./Slider";
 import { publicRequest } from "../functions/requestMethods";
 import axios from "axios";
+import { defaultData } from "../utils/defaultDataset";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -82,12 +83,10 @@ const RiskTolerance = () => {
 
   //   FUNCTION TO GENERATE CHART DATA
   function generateChartData(backendData, userRiskIndex) {
-    console.log(backendData);
-
     // Find the object in backendData with the matching risk index
-    const selectedData = backendData?.find(
-      (entry) => entry.index === userRiskIndex
-    );
+    const selectedData = (
+      backendData || convertPercentageStringsToNumbersArray(defaultData)
+    )?.find((entry) => entry.index === userRiskIndex);
 
     if (!selectedData) {
       // Handle the case when there's no matching risk index
@@ -122,7 +121,6 @@ const RiskTolerance = () => {
             "rgba(54, 162, 235, 0.2)",
             "rgba(255, 206, 86, 0.2)",
             "rgba(75, 192, 192, 0.2)",
-
             "rgba(255, 0, 255, 1)",
             "rgba(0, 255, 255, 1)",
             "rgba(128, 0, 128, 1)",
@@ -162,31 +160,53 @@ const RiskTolerance = () => {
   //   END OF USEEFFECT TO GENERATE CHART DATA BASED ON RISK TOLERANCE VALUE
 
   //   USEEFFECT TO GENERATE CHART DATA BASED ON RISK TOLERANCE VALUE
+
   useEffect(() => {
     const cancelToken = axios.CancelToken.source();
 
     const fetchRiskToRelevanceData = async () => {
-      console.log("Hello");
       try {
-        await publicRequest
-          .get("/tolerance", { cancelToken: cancelToken.token })
-          .then((res) => {
-            const convertedData = convertPercentageStringsToNumbersArray(
-              res?.data
-            );
-            console.log(convertedData);
-            return setBackendResponse(convertedData);
+        // Check if data is present in session storage
+        const storedData = sessionStorage.getItem("riskToleranceData");
+
+        if (storedData) {
+          const convertedData = convertPercentageStringsToNumbersArray(
+            JSON.parse(storedData)
+          );
+          // const convertedData = JSON.parse(storedData);
+          console.log("Data loaded from session storage:", convertedData);
+          setBackendResponse(convertedData);
+        } else {
+          // Fetch data from the API
+          const response = await publicRequest.get("/tolerance", {
+            cancelToken: cancelToken.token,
           });
+
+          const convertedData = convertPercentageStringsToNumbersArray(
+            response?.data
+          );
+          console.log("Data fetched from API:", convertedData);
+
+          // Store data in session storage
+          sessionStorage.setItem(
+            "riskToleranceData",
+            JSON.stringify(response?.data)
+          );
+
+          setBackendResponse(convertedData);
+        }
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
+
     fetchRiskToRelevanceData();
 
     return () => {
       cancelToken.cancel();
     };
   }, []);
+
   //   END OF USEEFFECT TO GENERATE CHART DATA BASED ON RISK TOLERANCE VALUE
 
   return (
