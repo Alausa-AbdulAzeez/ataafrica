@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { video1, video2 } from "../assets/videos";
-import Navbar from "./Navbar";
+import { Navbar } from "./index";
 
 const Hero = () => {
   // SCROLL VIEW
@@ -49,12 +49,12 @@ const Hero = () => {
 
       {/* Your Content */}
       <Navbar isVisible={isVisible} />
-      <div className="w-full h-[calc(100vh-80px)] z-[9] absolute flex px-[64px] flex-col justify-center text-white">
-        <h1 className="text-[60px] w-[50%]">
+      <div className="w-full h-[calc(100vh-80px)] z-[9] absolute flex px-[64px] max-md:px-[12px] flex-col justify-center text-white">
+        <h1 className="text-[60px] w-[50%] max-md:w-[90%] max-lg:w-[80%] max-md:text-[25px] max-lg:text-[35px]">
           Empower your future{" "}
           <span className="italic font-semibold "> with smart</span> investing
         </h1>
-        <div className="text-[30px] w-[50%] text-[#9e9e9e]">
+        <div className="text-[30px] w-[50%] text-[#9e9e9e] max-md:w-[90%] max-md:text-[15px] max-lg:w-[80%] max-lg:text-[25px]">
           Effortless wealth-building with tailored portfolios and intelligent
           strategies.
         </div>
