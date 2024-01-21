@@ -5,6 +5,7 @@ import DiscreteSliderMarks from "./Slider";
 import { publicRequest } from "../functions/requestMethods";
 import axios from "axios";
 import { defaultData } from "../utils/defaultDataset";
+import GetStarted from "./GetStarted";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -210,29 +211,27 @@ const RiskTolerance = () => {
   //   END OF USEEFFECT TO GENERATE CHART DATA BASED ON RISK TOLERANCE VALUE
 
   return (
-    <div className="w-full h-screen flex pl-[64px] relative">
+    <div className="w-full h-screen flex pl-[64px] relative max-md:px-[12px] max-lg:px-[28px] max-lg:flex-col">
       <div className="flex flex-1 flex-col justify-center ">
-        <div className="w-[420px] flex flex-col items-center justify-center rounded-lg h-[100px] bg-white shadow-2xl absolute left-[30%] top-[30px]">
-          <div className="w-full flex justify-between px-5">
+        <div className="w-[420px] max-md:w-[90%] flex  flex-col items-center justify-center rounded-lg h-[100px] bg-white shadow-2xl absolute left-[30%] max-md:left-[5px] max-lg:-top-16 max-md:text-xs max-md:p-5 z-50 top-[30px] p-8">
+          <div className="w-full flex justify-between px-5 max-md:px-0">
             <div className="font-bold text-blue-950">{`Risk score: ${riskToleranceValue}`}</div>
             <div className="">{`Example portfolio`}</div>
           </div>
           <DiscreteSliderMarks setRiskToleranceValue={setRiskToleranceValue} />
         </div>
-        <h1 className="text-[60px]">
+        <h1 className="text-[60px]  max-md:text-[25px] max-lg:text-[35px]">
           Empower your future{" "}
           <span className="italic font-semibold "> with smart</span> investing
         </h1>
-        <div className="text-[30px] text-[#9e9e9e]">
+        <div className="text-[30px] text-[#9e9e9e] max-md:text-[15px] max-lg:text-[25px]">
           Effortless wealth-building with tailored portfolios and intelligent
           strategies.
         </div>
-        <div className="text-[18px] mt-[50px] border transition-all ease-in-out duration-2500 text-white bg-black border-black py-[14px] flex items-center justify-center px-[40px] rounded-lg shadow-lg cursor-pointer hover:scale-[1.1] w-fit ">
-          Get started
-        </div>
+        <GetStarted />
       </div>
       <div className="flex flex-1 items-center justify-center ">
-        <div className="w-[70%] h-[70%] p-[50px] flex items-center justify-center  border-l border-[#c5c5c5]">
+        <div className="w-[70%] max-lg:w-[100%] h-[70%] max-lg:h-[100%] p-[50px] max-lg:p-[0px] flex items-center justify-center  border-l max-lg:border-none border-[#c5c5c5]">
           <Doughnut data={data} />
         </div>
       </div>

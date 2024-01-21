@@ -23,7 +23,7 @@ function valuetext(value) {
 
 export default function DiscreteSliderMarks({ setRiskToleranceValue }) {
   return (
-    <Box sx={{ width: 300 }}>
+    <Box sx={{ width: "100%" }}>
       <Slider
         aria-label="Custom marks"
         defaultValue={0}
