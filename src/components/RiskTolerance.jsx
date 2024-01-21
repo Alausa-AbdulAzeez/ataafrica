@@ -213,7 +213,7 @@ const RiskTolerance = () => {
   return (
     <div className="w-full h-screen flex pl-[64px] relative max-md:px-[12px] max-lg:px-[28px] max-lg:flex-col">
       <div className="flex flex-1 flex-col justify-center ">
-        <div className="w-[420px] max-md:w-[90%] flex  flex-col items-center justify-center rounded-lg h-[100px] bg-white shadow-2xl absolute left-[30%] max-md:left-[5px] max-lg:-top-16 max-md:text-xs max-md:p-5 z-50 top-[30px] p-8">
+        <div className="w-[420px] max-md:w-[90%] flex  flex-col items-center justify-center rounded-lg h-[100px] bg-white shadow-2xl absolute left-[30%] max-md:left-[5px] max-lg:-top-[100px] max-md:text-xs max-md:p-5 z-50 top-[30px] p-8">
           <div className="w-full flex justify-between px-5 max-md:px-0">
             <div className="font-bold text-blue-950">{`Risk score: ${riskToleranceValue}`}</div>
             <div className="">{`Example portfolio`}</div>
