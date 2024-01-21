@@ -1,7 +1,7 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { fadeIn } from "../utils/motion";
 import { GetStarted } from "./index";
+import { trust1 } from "../assets/images";
 
 const Partner = () => {
   return (
@@ -15,7 +15,7 @@ const Partner = () => {
         >
           <div className="absolute w-full h-full bg-[#00000067] top-0 left-0"></div>
           <img
-            src="https://images.pexels.com/photos/814544/pexels-photo-814544.jpeg?auto=compress&cs=tinysrgb&w=600"
+            src={trust1}
             alt="Trust"
             className="object-cover w-full h-full"
           />

@@ -6,7 +6,7 @@ const Hero = () => {
   // SCROLL VIEW
   const [isVisible, setIsVisible] = useState(false);
 
-  // Check if the user has scrolled down enough to show the button
+  // Function to Check if the user has scrolled down enough to show the button
   const handleScroll = () => {
     if (window.scrollY > 200) {
       setIsVisible(true);
@@ -14,14 +14,7 @@ const Hero = () => {
       setIsVisible(false);
     }
   };
-
-  // Scroll to the top when the button is clicked
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth", // You can adjust the scroll behavior here
-    });
-  };
+  // End of unction to check if the user has scrolled down enough to show the button
 
   // Add a scroll event listener when the component mounts
   useEffect(() => {
@@ -47,7 +40,6 @@ const Hero = () => {
       {/* Content Overlay */}
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
-      {/* Your Content */}
       <Navbar isVisible={isVisible} />
       <div className="w-full h-[calc(100vh-80px)] z-[9] absolute flex px-[64px] max-md:px-[12px] flex-col justify-center text-white">
         <h1 className="text-[60px] w-[50%] max-md:w-[90%] max-lg:w-[80%] max-md:text-[25px] max-lg:text-[35px]">

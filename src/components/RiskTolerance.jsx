@@ -149,10 +149,9 @@ const RiskTolerance = () => {
       ],
     };
 
-    console.log(data);
-
     return setData(data);
   }
+  //   END OF FUNCTION TO GENERATE CHART DATA
 
   //   USEEFFECT TO GENERATE CHART DATA BASED ON RISK TOLERANCE VALUE
   useEffect(() => {
@@ -175,7 +174,6 @@ const RiskTolerance = () => {
             JSON.parse(storedData)
           );
           // const convertedData = JSON.parse(storedData);
-          console.log("Data loaded from session storage:", convertedData);
           setBackendResponse(convertedData);
         } else {
           // Fetch data from the API
@@ -186,7 +184,6 @@ const RiskTolerance = () => {
           const convertedData = convertPercentageStringsToNumbersArray(
             response?.data
           );
-          console.log("Data fetched from API:", convertedData);
 
           // Store data in session storage
           sessionStorage.setItem(
